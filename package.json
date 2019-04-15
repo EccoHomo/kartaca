@@ -1,0 +1,16 @@
+{
+  "name": "kartaca_assignment",
+  "version": "1.0.0",
+  "description": "Kartaca Internship",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ersin Kocamis",
+  "license": "ISC",
+  "dependencies": {
+    "app-root-path": "^2.2.1",
+    "socket.io": "^2.2.0",
+    "winston": "^3.2.1"
+  }
+}
