@@ -30,7 +30,7 @@ npm install app-root-path
 ```
 ## Running API
 
-To run this API, go to directory o API's folder in Command Prompt as
+To run this API, go to directory of API's folder in Command Prompt as
 
 ```bash
 $ cd Path\To\File\Location\kartaca_assignment
