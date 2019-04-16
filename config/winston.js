@@ -10,7 +10,7 @@ var logger = createLogger({
 			//If logs wanted to be seen in the console too
 			//the comment symbols can be changed to uncomment
 			//
-			console.log(`[${info.IP}]-[${info.Date}]-[${info.Path}]-[${info.Data}]`);
+			//console.log(`[${info.IP}]-[${info.Date}]-[${info.Path}]-[${info.Data}]`);
 			return info;
 		})(),
 		format.json()
