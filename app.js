@@ -6,14 +6,13 @@ var logger = require('./config/winston');
 var converter = require('./converter');
 
 app.listen(8000);
-var hostname;
 var path;
+
 function handler(req, res){
-	logger.log('info', "Method: " + req.method, req.headers);
-	hostname = req.headers.host;
+
 	path = url.parse(req.url).pathname;
+
 	if(path === '/'){
-		logger.log('info',"Connection to " + hostname + path);
 		fs.readFile(__dirname + '/html_pages/index.html',function(err, data){
 			if(err){
 				res.writeHead(500);
@@ -34,7 +33,6 @@ function handler(req, res){
 			res.end(data);
 		});
 	}else if(path === '/morse_latin.html'){
-		logger.log('info',"Connection to " + hostname + path);
 		fs.readFile(__dirname + '/html_pages/morse_latin.html',function(err, data){
 			if(err){
 				res.writeHead(500);
@@ -51,7 +49,16 @@ function handler(req, res){
 }
 
 io.on('connection',function(socket){
+	//------
+	//This solution is not exist in documentation of socket.io.
+	//but still works. If necessary, changes can be made.
+	//Output of ip can change time to time.
+	//In localhost possible outputs are: [::1] or [::ffff:127.0.0.1].
+	var ip = socket.request.connection._peername.address;
+	// -----
+	var date = new Date();
 	socket.on('latin_request',function(data){
+		logger.log('info', {IP: ip, Date: date, Path: 'Latin to Morse', Data: data.req_data});
 		var morse_code = converter.latin_morse(data.req_data);
 		socket.emit('latin_response',{
 			response : morse_code
@@ -59,13 +66,10 @@ io.on('connection',function(socket){
 	}),
 
 	socket.on('morse_request',function(data){
+		logger.log('info', {IP: ip, Date: date, Path: 'Morse to Latin', Data: data.req_data});
 		var latin_alphabet = converter.morse_latin(data.req_data);
 		socket.emit('morse_response',{
 			response : latin_alphabet
 		});
-	}),
-
-	socket.on('disconnect',function(){
-		logger.log('info',"Disconnection from " + hostname + path);
 	})
 });

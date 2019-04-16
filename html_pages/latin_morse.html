@@ -4,13 +4,14 @@
 	<title>Latin to Morse</title>
 	<script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
 	<script src ="/socket.io/socket.io.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 	<div id=ltm class="lengths">
 		
-		<textarea v-model = "input_text" cols=50 rows=10></textarea><br><br>
+		<textarea v-model = "input_text" cols=50 rows=10 id="textarea_newline"></textarea><br><br>
 		<button v-on:click="convert_text">Convert</button><br><br>
-		<textarea v-model = "output_text" readonly cols=50 rows=10></textarea><br><br>
+		<textarea v-model = "output_text" readonly cols=50 rows=10 id="textarea_newline"></textarea><br><br>
 		<a href="/">Back to Home</a>
 
 	</div>
@@ -41,6 +42,10 @@
 		socket.on('latin_response', function(data){
 			convert.output_text = data.response;
 		});
+
+		$( "#textarea_newline" ).keyup( function() {
+       		$( "#output_div" ).html( $( this ).val() );
+    	}); 
 	</script>
 
 </body>

@@ -48,6 +48,13 @@ const morse_code_table = {
 		var freq_letters_size = freq_letters_objects.length;
 
 module.exports = {
+	/*
+	* Converts the text written in Latin alphabet to Morse code.
+	* Summary of its process:
+	* First looks for the most frequest used latters in latin alphabet.
+	* At each match, deleted the matched element of array. The reason for this
+	* is increase of search speed. After finished, returns output text.
+	*/
 	latin_morse : function(data){
 		var data = data.toUpperCase().split("");
 		var data_size = data.length;
@@ -56,8 +63,8 @@ module.exports = {
 
 		for(i=0; i <= data_size; i++){
 			var flag = 0;
-			if(data[i] === " "){
-				morse_code[i] = " / ";
+			if(data[i] === " " || data[i] === "\n"){
+				morse_code[i] = " / \n";
 			}
 			if(flag == 0){
 				for(j=0; j < freq_letters_size; j++){
@@ -81,6 +88,9 @@ module.exports = {
 		return str;
 	},
 
+	/*
+	* Same goes here as in latin_morse function.
+	*/
 	morse_latin : function(data){
 		var data = data.split(" ");
 		var data_size = data.length;
@@ -89,8 +99,8 @@ module.exports = {
 
 		for(i=0; i <= data_size; i++){
 			var flag = 0;
-			if(data[i] === "/"){
-				latin_text[i] = " ";
+			if(data[i] === "/" || data[i] === "\n"){
+				latin_text[i] = " \n";
 			}
 			if(flag == 0){
 				for(j=0; j < freq_letters_size; j++){
