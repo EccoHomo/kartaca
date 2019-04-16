@@ -18,7 +18,7 @@ npm install socket-io
 For logging processes Winston used. Again, open Command Prompt and type
 
 ```bash
-npm install Winston
+npm install winston
 ```
 
 ## Additional Module
