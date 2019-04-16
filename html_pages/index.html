@@ -3,31 +3,40 @@
 <head>
 	<title>Home by manuel</title>
 	<style>
-		a:link, a:visited {
-		  background-color: #fff5f5;
-		  color: black;
-		  padding: 10px 10px;
-		  text-align: center;
-		  text-decoration: none;
-		  display: inline-block;
+		.center {
+		  margin: auto;
+		  width: 30%;
 		  border: 1px solid black;
+		  padding: 5px;
+          background-color: lightyellow;
 		}
-
-		a:hover, a:active {
-		  background-color: red;
-		}
+        a:active, a:visited,{
+        	background-color: red;
+            text-shadow: 3px 2px lightgrey;
+        }
+        a:hover, a:link {
+        	background-color: lightyellow;
+            color:black;
+            text-decoration: none;
+        }
+        body {
+        	background-color: snow;
+        }
 	</style>
 </head>
 <body>
 	<center>
 		<h1>Please choose one of the converters below.</h1>
 	</center>
+	<center class="center">
 	<a href="/latin_morse.html">
 		<p>Latin to Morse</p>
-	</a><br><br>
+	</a></center>
+	<br><br>
+	<center class="center">
 	<a href="/morse_latin.html">
 		<p>Morse to Latin</p>
-	</a>
+	</a></center>
 
 </body>
 </html>

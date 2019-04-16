@@ -63,8 +63,8 @@ module.exports = {
 
 		for(i=0; i <= data_size; i++){
 			var flag = 0;
-			if(data[i] === " " || data[i] === "\n"){
-				morse_code[i] = " / \n";
+			if(data[i] === " "){
+				morse_code[i] = " / ";
 			}
 			if(flag == 0){
 				for(j=0; j < freq_letters_size; j++){
@@ -99,8 +99,8 @@ module.exports = {
 
 		for(i=0; i <= data_size; i++){
 			var flag = 0;
-			if(data[i] === "/" || data[i] === "\n"){
-				latin_text[i] = " \n";
+			if(data[i] === "/"){
+				latin_text[i] = " ";
 			}
 			if(flag == 0){
 				for(j=0; j < freq_letters_size; j++){

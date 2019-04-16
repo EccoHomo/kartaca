@@ -5,13 +5,42 @@
 	<script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
 	<script src ="/socket.io/socket.io.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<style>
+		body {
+        	background-color: snow;
+        }
+        .txtArea {
+        	background-color: lightyellow;
+        	border-radius: 20px;
+        }
+        .center {
+		  margin: auto;
+		  width: 30%;
+		  border: 1px solid black;
+		  padding: 5px;
+          background-color: lightyellow;
+		}
+        a:active, a:visited,{
+        	background-color: red;
+            text-shadow: 3px 2px lightgrey;
+        }
+        a:hover, a:link {
+        	background-color: lightyellow;
+            color:black;
+            text-decoration: none;
+        }
+	</style>
 </head>
 <body>
 	<div id=mtl>
-		<textarea v-model = "input_text" cols=50 rows=10></textarea><br><br>
-		<button v-on:click="convert_text">Convert</button><br><br>
-		<textarea v-model = "output_text" readonly cols=50 rows=10></textarea><br><br>
-		<a href="/">Back to Home</a>
+		<center>
+			<textarea v-model = "input_text" cols=50 rows=10 class="txtArea"></textarea><br><br>
+			<button v-on:click="convert_text">Convert</button><br><br>
+			<textarea v-model = "output_text" readonly cols=50 rows=10 class="txtArea"></textarea><br><br>
+			<a href="/" class="center">Back to Home</a>
+		</center>
+		
 	</div>
 
 	<script>
@@ -40,10 +69,6 @@
 		socket.on('morse_response', function(data){
 			convert.output_text = data.response;
 		});
-
-		$( "#textarea_newline" ).keyup( function() {
-       		$( "#output_div" ).html( $( this ).val() );
-    	}); 
 	</script>
 
 </body>
