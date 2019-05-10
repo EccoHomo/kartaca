@@ -15,7 +15,7 @@ https://nodejs.org/en/
 After the installation, to run this API, go to directory of API's folder in Command Prompt as
 
 ```bash
-$ cd Path\To\File\Location\kartaca-master
+$ cd Path\To\File\Directory\kartaca-master
 ```
 
 Then run the following command
